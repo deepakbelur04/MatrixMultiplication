@@ -105,22 +105,16 @@ optionNumber = int(input("Choose a value above from 1 to 5\n"))
 
 print(optionNumber)
 
-if optionNumber == 1:
-    print("you have selected a dot product multiplication")
-    dotProduct(matrixA, matrixB)
+options = {
+    1: [dotProduct, 'dot product'],
+    2: [columnProduct, 'Column method'],
+    3: [rowProduct, 'Row method'],
+    4: [outerProduct, 'Outer Product'],
+    5: [blockProduct, 'Block']
+}
 
-elif optionNumber == 2:
-    print("you have selected a Column method multiplication")
-    columnProduct(matrixA, matrixB)
-
-elif optionNumber == 3:
-    print("you have selected a Row method multiplication")
-    rowProduct(matrixA, matrixB)
-elif optionNumber == 4:
-    print("you have selected a Outer Product multiplication")
-    outerProduct(matrixA, matrixB)
-elif optionNumber == 5:
-    print("you have selected a Block multiplication")
-    blockProduct(matrixA, matrixB)
+if optionNumber in options:
+    print(f"you have selected a {options[optionNumber][1]} multiplication")
+    options[optionNumber][0](matrixA, matrixB)
 else:
     print("Invalid Entry or Choice")
