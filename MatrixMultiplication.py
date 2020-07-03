@@ -1,24 +1,33 @@
 import numpy as np
 import matplotlib as mpl
 
-matrixA = [[1, 4, 3],
-           [5, 7, 9],
-           [2, 7, 8]]
-matrixB = [[4, 3, 2],
-           [7, 1, 5],
-           [2, 9, 1]]
+matrixY = [[np.cos(45), 0, -np.sin(45)],
+           [0, 1, 0],
+           [np.sin(45), 0, np.cos(45)]]
 
-result = [[0, 0, 0],
-          [0, 0, 0],
-          [0, 0, 0]]
+matrixZ = [[np.cos(45), -np.sin(45), 0],
+           [np.sin(45), np.cos(45), 0],
+           [0, 0, 1]]
 
-zipMatrix = zip(matrixA, matrixB)
+matrixX = [[1, 0, 0],
+           [0, np.cos(45), -np.sin(45)],
+           [0, np.sin(45), np.cos(45)]]
+
+matrixB = [[9],
+           [0],
+           [9]]
+
+result = [[0],
+          [0],
+          [0]]
+
+zipMatrix = zip(matrixY, matrixB)
 tupleZipMatrix = tuple(zipMatrix)
 
 #print(tupleZipMatrix[0][0][2])
 
-columnLenA = int(len(matrixA))
-rowLenA = int(len(matrixA[0]))
+columnLenA = int(len(matrixY))
+rowLenA = int(len(matrixY[0]))
 
 columnLenB = int(len(matrixB))
 rowLenB = int(len(matrixB[0]))
@@ -34,7 +43,20 @@ def dotProduct(sampleMatrix1, sampleMatrix2):
     # y= np.array(sampleMatrix2)
     z = np.dot(sampleMatrix1, sampleMatrix2)
     # np.reshape(z,(3,3))
-    print(z)
+    print("XZ Plane" +str(z))
+
+    z = np.dot(matrixZ, z)
+    # np.reshape(z,(3,3))
+    print("XY Plane" +str(z))
+
+    z = np.dot(matrixZ, z)
+    # np.reshape(z,(3,3))
+    print("XY Plane" +str(z))
+
+    z = np.dot(matrixX, z)
+    # np.reshape(z,(3,3))
+    print("YZ Plane" + str(z))
+
 
 
 def columnProduct(sampleMatrix1, sampleMatrix2):
@@ -107,20 +129,20 @@ print(optionNumber)
 
 if optionNumber == 1:
     print("you have selected a dot product multiplication")
-    dotProduct(matrixA, matrixB)
+    dotProduct(matrixY, matrixB)
 
 elif optionNumber == 2:
     print("you have selected a Column method multiplication")
-    columnProduct(matrixA, matrixB)
+    columnProduct(matrixY, matrixB)
 
 elif optionNumber == 3:
     print("you have selected a Row method multiplication")
-    rowProduct(matrixA, matrixB)
+    rowProduct(matrixY, matrixB)
 elif optionNumber == 4:
     print("you have selected a Outer Product multiplication")
-    outerProduct(matrixA, matrixB)
+    outerProduct(matrixY, matrixB)
 elif optionNumber == 5:
     print("you have selected a Block multiplication")
-    blockProduct(matrixA, matrixB)
+    blockProduct(matrixY, matrixB)
 else:
     print("Invalid Entry or Choice")
