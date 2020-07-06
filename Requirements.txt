@@ -1,2 +1,5 @@
 numpy== 1.19.0
 matplotlib
+scipy
+scikit-learn
+sklearn
