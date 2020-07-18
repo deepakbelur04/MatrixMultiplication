@@ -4,7 +4,7 @@ from scipy.linalg import lu
 import matplotlib.pyplot as mp
 from numpy import array
 
-a = np.array([[1, 3, 5], [2, 5, 1], [2, 3, 8]])
+a = np.array([[0, 1, 0, 0], [1, 1, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]])
 
 
 ####Finding Rank of the Matrix using Gaussian Elimination####
@@ -17,7 +17,7 @@ else:
     print("its not a square matrix>>Gaussian Elimination Not Possible")
     exit()
 pl, u = lu(a, permute_l=True)
-print(u)
+print("Gaussian Emimination      "+str(u))
 
 r = np.linalg.matrix_rank(u)
 print("Rank of Matrix   "+str(r))
